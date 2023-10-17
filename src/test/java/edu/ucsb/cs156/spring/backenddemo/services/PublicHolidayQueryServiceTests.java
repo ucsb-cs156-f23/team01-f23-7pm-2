@@ -12,24 +12,21 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
 
-@RestClientTest(EarthquakeQueryService.class)
-public class EarthquakeQueryServiceTests {
+@RestClientTest(PublicHolidayQueryService.class)
+public class PublicHolidayQueryServiceTests {
 
     @Autowired
     private MockRestServiceServer mockRestServiceServer;
 
     @Autowired
-    private EarthquakeQueryService earthquakeQueryService;
+    private PublicHolidayQueryService publicHolidayQueryService;
 
     @Test
     public void test_getJSON() {
-
-        String distance = "10";
-        String minMag = "1.5";
-        String ucsbLat = "34.4140"; // hard coded params for Storke Tower
-        String ucsbLong = "-119.8489";
-        String expectedURL = EarthquakeQueryService.ENDPOINT.replace("{distance}", distance)
-                .replace("{minMag}", minMag).replace("{latitude}", ucsbLat).replace("{longitude}", ucsbLong);
+        String year = "2023"; // hard coded params for Storke Tower
+        String countryCode = "UnitedStates";
+        String expectedURL = PublicHolidayQueryService.ENDPOINT.replace("{year}", year)
+                .replace("{countryCode}", countryCode);
 
         String fakeJsonResult = "{ \"fake\" : \"result\" }";
 
@@ -38,7 +35,7 @@ public class EarthquakeQueryServiceTests {
                 .andExpect(header("Content-Type", MediaType.APPLICATION_JSON.toString()))
                 .andRespond(withSuccess(fakeJsonResult, MediaType.APPLICATION_JSON));
 
-        String actualResult = earthquakeQueryService.getJSON(distance, minMag);
+        String actualResult = publicHolidayQueryService.getJSON(year, countryCode);
         assertEquals(fakeJsonResult, actualResult);
-    } 
+    }
 }
