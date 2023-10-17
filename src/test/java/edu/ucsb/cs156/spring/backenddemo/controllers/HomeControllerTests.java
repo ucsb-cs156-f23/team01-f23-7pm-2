@@ -5,10 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -43,21 +40,16 @@ public class HomeControllerTests {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("greeting","Greetings from Spring Boot!");
-
         String baseUrl = "http://localhost:8080/";
 
-        List<String> team = new ArrayList<>();
-        team.add("Andy O.");
-        team.add("Hongrui S.");
-        team.add("Jonathan C.");
-        team.add("Kyle W.");
-        team.add("Richard H.");
-        team.add("Tiger Y.");
-        resultMap.put("team",team);
-        resultMap.put("repo","https://github.com/ucsb-cs156-f23/team01-f23-7pm-2");
-        resultMap.put("api-documentation", baseUrl + "swagger-ui/index.html");
+        List<String> team = Arrays.asList("Andy O.", "Hongrui S.", "Jonathan C.", "Kyle W.", "Richard H.", "Tiger Y.");
+        Map<String, Object> resultMap = Map.of(
+                "greeting","Greetings from Spring Boot!",
+                "team", team,
+                "repo","https://github.com/ucsb-cs156-f23/team01-f23-7pm-2",
+                "api-documentation", baseUrl + "swagger-ui/index.html"
+        );
+
         String expected = mapper.writeValueAsString(resultMap);
         String actual = HomeController.getHomePageObjectJSON("http://localhost:8080/");
 

@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,19 +36,14 @@ public class HomeController {
     public static String getHomePageObjectJSON(String baseUrl) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
 
-        Map<String, Object> resultMap = new HashMap<String, Object>();
-        resultMap.put("greeting","Greetings from Spring Boot!");
+        List<String> team = Arrays.asList("Andy O.", "Hongrui S.", "Jonathan C.", "Kyle W.", "Richard H.", "Tiger Y.");
+        Map<String, Object> resultMap = Map.of(
+                "greeting","Greetings from Spring Boot!",
+                "team", team,
+                "repo","https://github.com/ucsb-cs156-f23/team01-f23-7pm-2",
+                "api-documentation", baseUrl + "swagger-ui/index.html"
+        );
 
-        List<String> team = new ArrayList<String>();
-        team.add("Andy O.");
-        team.add("Hongrui S.");
-        team.add("Jonathan C.");
-        team.add("Kyle W.");
-        team.add("Richard H.");
-        team.add("Tiger Y.");
-        resultMap.put("team",team);
-        resultMap.put("repo","https://github.com/ucsb-cs156-f23/team01-f23-7pm-2");
-        resultMap.put("api-documentation", baseUrl + "swagger-ui/index.html");
         return mapper.writeValueAsString(resultMap);
     }
 }
