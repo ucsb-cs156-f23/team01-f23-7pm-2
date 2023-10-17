@@ -40,5 +40,5 @@ public class EarthquakeQueryServiceTests {
 
         String actualResult = earthquakeQueryService.getJSON(distance, minMag);
         assertEquals(fakeJsonResult, actualResult);
-    } 
+    }
 }
