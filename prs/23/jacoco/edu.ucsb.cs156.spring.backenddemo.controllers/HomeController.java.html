@@ -11,48 +11,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Tag(name=&quot;Home Page with links to documentation&quot;)
-<span class="fc" id="L23">@Slf4j</span>
+<span class="fc" id="L20">@Slf4j</span>
 @RestController
-<span class="fc" id="L25">public class HomeController {</span>
+<span class="fc" id="L22">public class HomeController {</span>
     
     @Operation(summary = &quot;Get general info about the server, including link to api documentation&quot;)
     @GetMapping(&quot;/&quot;)
     public ResponseEntity&lt;String&gt; getHome() throws JsonProcessingException {
-<span class="fc" id="L30">        log.info(&quot;Home Page accessed&quot;);</span>
-<span class="fc" id="L31">        ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentRequestUri();</span>
+<span class="fc" id="L27">        log.info(&quot;Home Page accessed&quot;);</span>
+<span class="fc" id="L28">        ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentRequestUri();</span>
         // builder.scheme(&quot;http&quot;);
-<span class="fc" id="L33">        URI uri = builder.build().toUri();</span>
+<span class="fc" id="L30">        URI uri = builder.build().toUri();</span>
 
-<span class="fc" id="L35">        String body = getHomePageObjectJSON(uri.toString());</span>
-<span class="fc" id="L36">        return ResponseEntity.ok().body(body);</span>
+<span class="fc" id="L32">        String body = getHomePageObjectJSON(uri.toString());</span>
+<span class="fc" id="L33">        return ResponseEntity.ok().body(body);</span>
     }
     
     public static String getHomePageObjectJSON(String baseUrl) throws JsonProcessingException {
-<span class="fc" id="L40">        ObjectMapper mapper = new ObjectMapper();</span>
+<span class="fc" id="L37">        ObjectMapper mapper = new ObjectMapper();</span>
 
-<span class="fc" id="L42">        Map&lt;String, Object&gt; resultMap = new HashMap&lt;String, Object&gt;();</span>
-<span class="fc" id="L43">        resultMap.put(&quot;greeting&quot;,&quot;Greetings from Spring Boot!&quot;);</span>
+<span class="fc" id="L39">        List&lt;String&gt; team = Arrays.asList(&quot;Andy O.&quot;, &quot;Hongrui S.&quot;, &quot;Jonathan C.&quot;, &quot;Kyle W.&quot;, &quot;Richard H.&quot;, &quot;Tiger Y.&quot;);</span>
+<span class="fc" id="L40">        Map&lt;String, Object&gt; resultMap = Map.of(</span>
+                &quot;greeting&quot;,&quot;Greetings from Spring Boot!&quot;,
+                &quot;team&quot;, team,
+                &quot;repo&quot;,&quot;https://github.com/ucsb-cs156-f23/team01-f23-7pm-2&quot;,
+                &quot;api-documentation&quot;, baseUrl + &quot;swagger-ui/index.html&quot;
+        );
 
-<span class="fc" id="L45">        List&lt;String&gt; team = new ArrayList&lt;String&gt;();</span>
-<span class="fc" id="L46">        team.add(&quot;Andy O.&quot;);</span>
-<span class="fc" id="L47">        team.add(&quot;Hongrui S.&quot;);</span>
-<span class="fc" id="L48">        team.add(&quot;Jonathan C.&quot;);</span>
-<span class="fc" id="L49">        team.add(&quot;Kyle W.&quot;);</span>
-<span class="fc" id="L50">        team.add(&quot;Richard H.&quot;);</span>
-<span class="fc" id="L51">        team.add(&quot;Tiger Y.&quot;);</span>
-<span class="fc" id="L52">        resultMap.put(&quot;team&quot;,team);</span>
-<span class="fc" id="L53">        resultMap.put(&quot;repo&quot;,&quot;https://github.com/ucsb-cs156-f23/team01-f23-7pm-2&quot;);</span>
-<span class="fc" id="L54">        resultMap.put(&quot;api-documentation&quot;, baseUrl + &quot;swagger-ui/index.html&quot;);</span>
-<span class="fc" id="L55">        return mapper.writeValueAsString(resultMap);</span>
+<span class="fc" id="L47">        return mapper.writeValueAsString(resultMap);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
