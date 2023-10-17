@@ -43,18 +43,20 @@ public class HomeControllerTests {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("greeting","Greetings from Spring Boot!");
 
         String baseUrl = "http://localhost:8080/";
 
-        List<String> team = new ArrayList<String>();
-        team.add("Jing P.");
-        team.add("Christian S.");
-        team.add("Guy W.");
-        team.add("Phill C.");
+        List<String> team = new ArrayList<>();
+        team.add("Andy O.");
+        team.add("Hongrui S.");
+        team.add("Jonathan C.");
+        team.add("Kyle W.");
+        team.add("Richard H.");
+        team.add("Tiger Y.");
         resultMap.put("team",team);
-        resultMap.put("repo","https://github.com/ucsb-cs156-f23/STARTER-team01");
+        resultMap.put("repo","https://github.com/ucsb-cs156-f23/team01-f23-7pm-2");
         resultMap.put("api-documentation", baseUrl + "swagger-ui/index.html");
         String expected = mapper.writeValueAsString(resultMap);
         String actual = HomeController.getHomePageObjectJSON("http://localhost:8080/");
