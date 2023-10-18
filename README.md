@@ -11,7 +11,7 @@ Lab instructions: <https://ucsb-cs156.github.io/f23/lab/team01.html>
 | Andy Ouyang    | MuMuKow          | `UniversityQueryService`    | `UniversityController`    |
 | Kyle Wong      | KyleWong288      | `ZipCodeQueryService`       | `ZipCodeController`       |
 
-Repo: https://ucsb-cs156-f23/f23-7pm-2-team01
+Repo: https://github.com/ucsb-cs156-f23/f23-7pm-2-team01
 
 On Heroku: https://team01.dokku-10.cs.ucsb.edu
 
@@ -27,15 +27,15 @@ team of up to 5 students can build a proxy similar to the one in the example cod
 
 ## What can you do with this code?
 
-| Command                                            | What it does                                                                                                                                             |
-|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `mvn compile`                                      | Should result in a clean compile                                                                                                                         |
-| `mvn test`                                         | Runs JUnit tests on the code base                                                                                                                        |
-| `mvn test jacoco:report`                           | Runs JUnit tests, and if all tests pass, computes code coverage.  The code coverage report (Jacoco) can be found in `target/site/jacoco/index.html`      |
-| `mvn package`                                      | Builds the jar file `target/team01-spring-boot-1.0.0.jar`                                                                                                |
-| `mvn spring-boot:run`                              | Runs the code to startup a web server.  Access it via `http://localhost:8080` on the *same machine* where the server is running.  Use CTRL/C to stop it. |
-| `java -jar target/team01-spring-backend-1.0.0.jar` | If done after `mvn package`, this is another way to start up the web server.                                                                             |
-| `mvn test pitest:mutationCoverage`                 | Run [pitest mutation coverage](https://pitest.org).  View `target/pit-reports/index.html` for results (may take a few minutes)                           |
+| Command | What it does   |
+|----------|---------------------------------------|
+| `mvn compile` | Should result in a clean compile |
+| `mvn test` | Runs JUnit tests on the code base |
+| `mvn test jacoco:report` | Runs JUnit tests, and if all tests pass, computes code coverage.  The code coverage report (Jacoco) can be found in `target/site/jacoco/index.html` |
+| `mvn package` | Builds the jar file `target/team01-spring-boot-1.0.0.jar` |
+| `mvn spring-boot:run` | Runs the code to startup a web server.  Access it via `http://localhost:8080` on the *same machine* where the server is running.  Use CTRL/C to stop it. |
+| `java -jar target/team01-spring-backend-1.0.0.jar` | If done after `mvn package`, this is another way to start up the web server.|
+| `mvn test pitest:mutationCoverage` | Run [pitest mutation coverage](https://pitest.org).  View `target/pit-reports/index.html` for results (may take a few minutes)|
 
 # Deploying on Dokku
 
