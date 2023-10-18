@@ -11,7 +11,7 @@ Lab instructions: <https://ucsb-cs156.github.io/f23/lab/team01.html>
 | Andy Ouyang    | MuMuKow          | `UniversityQueryService`    | `UniversityController`    |
 | Kyle Wong      | KyleWong288      | `ZipCodeQueryService`       | `ZipCodeController`       |
 
-Repo: https://github.com/ucsb-cs156-f23/f23-7pm-2-team01
+Repo: https://github.com/ucsb-cs156-f23/team01-f23-7pm-2
 
 On Heroku: https://team01.dokku-10.cs.ucsb.edu
 
