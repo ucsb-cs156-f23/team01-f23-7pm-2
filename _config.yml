@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f23/team01-f23-7pm-2
 owner: ucsb-cs156-f23
 repo_name: team01-f23-7pm-2
-pull_requests: [{"author":{"id":"U_kgDOBXmKFg","is_bot":false,"login":"KyleWong288","name":"Kyle Wong"},"headRefName":"Kyle-ZipCode-Controller","number":32,"title":"kw - added controller and test for zipcode","url":"https://github.com/ucsb-cs156-f23/team01-f23-7pm-2/pull/32"}]
+pull_requests: [{"author":{"id":"U_kgDOBnFWcA","is_bot":false,"login":"raysujf","name":""},"headRefName":"Ray-Tides-Controller","number":33,"title":"Ray - Add Controller and Test for Tides","url":"https://github.com/ucsb-cs156-f23/team01-f23-7pm-2/pull/33"},{"author":{"id":"U_kgDOBXmKFg","is_bot":false,"login":"KyleWong288","name":"Kyle Wong"},"headRefName":"Kyle-ZipCode-Controller","number":32,"title":"kw - added controller and test for zipcode","url":"https://github.com/ucsb-cs156-f23/team01-f23-7pm-2/pull/32"}]
