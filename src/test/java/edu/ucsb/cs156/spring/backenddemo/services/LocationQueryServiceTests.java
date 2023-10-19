@@ -23,10 +23,10 @@ public class LocationQueryServiceTests {
     @Test
     public void test_getJSON() {
 
-        String location = "Beijing";
+        String location = "Isla_Vista";
         String expectedURL = LocationQueryService.ENDPOINT.replace("{location}", location);
 
-        String fakeJsonResult = "{ \"fake\" : \"result\" }";
+        String fakeJsonResult = "[{\"place_id\":309452706,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":8280709,\"lat\":\"34.4115125\",\"lon\":\"-119.8562131\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,\"importance\":0.37443815291409516,\"addresstype\":\"town\",\"name\":\"Isla Vista\",\"display_name\":\"Isla Vista, Santa Barbara County, California, 93106, United States\",\"boundingbox\":[\"34.4047282\",\"34.4243150\",\"-119.8814672\",\"-119.8371240\"]}]";
 
         this.mockRestServiceServer.expect(requestTo(expectedURL))
                 .andExpect(header("Accept", MediaType.APPLICATION_JSON.toString()))
