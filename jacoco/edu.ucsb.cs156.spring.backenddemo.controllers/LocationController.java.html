@@ -2,8 +2,42 @@
 
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.ucsb.cs156.spring.backenddemo.services.LocationQueryService;
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name=&quot;Locations from Nominatim API&quot;)
+<span class="fc" id="L22">@Slf4j</span>
 @RestController
-<span class="fc" id="L6">public class LocationController {</span>
+@RequestMapping(&quot;/api/locations&quot;)
+<span class="fc" id="L25">public class LocationController {</span>
     
+<span class="fc" id="L27">    ObjectMapper mapper = new ObjectMapper();</span>
+
+    @Autowired
+    LocationQueryService locationQueryService;
+
+    @Operation(summary = &quot;Get information on selected locations&quot;, description = &quot;JSON return format documented here: https://nominatim.openstreetmap.org/ui/search.html&quot;)
+    @GetMapping(&quot;/get&quot;)
+    public ResponseEntity&lt;String&gt; getEarthquakes(
+        @Parameter(name=&quot;location&quot;, description=&quot;location you want to search for&quot;, example=&quot;Isla_Vista&quot;) @RequestParam String location
+    ) throws JsonProcessingException {
+<span class="fc" id="L37">        log.info(&quot;getLocation: location={}&quot;, location);</span>
+<span class="fc" id="L38">        String result = locationQueryService.getJSON(location);</span>
+<span class="fc" id="L39">        return ResponseEntity.ok().body(result);</span>
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
